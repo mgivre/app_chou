@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}Créer un événement{% endblock %} {%
+block content %}
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h2>Créer un nouvel événement</h2>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('main.create_event_route') }}">
+          <div class="mb-3">
+            <label for="title" class="form-label">Titre de l'événement *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="description"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="date" class="form-label">Date *</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              id="date"
+              name="date"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Lieu</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              name="location"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="max_participants" class="form-label"
+              >Nombre maximum de participants</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="max_participants"
+              name="max_participants"
+              min="0"
+            />
+            <div class="form-text">
+              Laissez vide ou 0 pour un nombre illimité de participants.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Créer l'événement
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

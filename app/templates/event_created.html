@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Événement créé{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <div class="card">
+            <div class="card-header">
+                <h2>Événement créé avec succès !</h2>
+            </div>
+            <div class="card-body">
+                <p>Votre événement a été créé. Partagez ce QR code pour permettre aux participants de s'inscrire :</p>
+                
+                <div class="my-4">
+                    <img src="{{ qr_code_url }}" alt="QR Code d'inscription" class="img-fluid" style="max-width: 300px;">
+                </div>
+                
+                <p>Lien d'inscription : <ahref="{{ url_for('main.register_for_event', event_id=event_id, _external=True) }}">
+                    {{ url_for('main.register_for_event', event_id=event_id, _external=True) }}
+                </a></p>
+                
+                <div class="mt-4">
+                    <ahref="{{ url_for('main.view_registrations', event_id=event_id) }}" class="btn btn-info">
+                        Voir les inscriptions
+                    </a>
+                    <ahref="{{ url_for('main.create_event_route') }}" class="btn btn-primary">
+                        Créer un autre événement
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
